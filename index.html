@@ -1,0 +1,157 @@
+<div class="lock-screen" id="lock-screen">
+    <div class="lock-content">
+        <div class="lock-time" id="lock-time">00:00</div>
+        <div class="lock-date" id="lock-date">Понедельник, 25 марта</div>
+        <div class="lock-ai-hint">✨ Система готова к работе. Личность подтверждена (NeuralID)</div>
+        <button class="login-btn" onclick="unlockSystem()">Войти в Windows 12</button>
+    </div>
+</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 12 от Werhes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="desktop">
+      <div class="fluid-window hidden" id="calc-window" style="left: 40%; top: 10%; width: 320px; height: 450px;">
+    <div class="window-header">
+        <div class="header-left">
+            <span>Calculator</span>
+        </div>
+        <div class="window-controls">
+            <button class="win-btn" onclick="toggleApp('calc-window')">─</button>
+            <button class="win-btn close" onclick="closeApp('calc-window')">✕</button>
+        </div>
+    </div>
+    <div class="window-content calc-body">
+        <div class="calc-display" id="calc-display">0</div>
+        <div class="calc-grid">
+            <button onclick="calcClear()">C</button>
+            <button onclick="calcInput('/')">/</button>
+            <button onclick="calcInput('*')">×</button>
+            <button onclick="calcBackspace()">⌫</button>
+            <button onclick="calcInput('7')">7</button>
+            <button onclick="calcInput('8')">8</button>
+            <button onclick="calcInput('9')">9</button>
+            <button onclick="calcInput('-')">-</button>
+            <button onclick="calcInput('4')">4</button>
+            <button onclick="calcInput('5')">5</button>
+            <button onclick="calcInput('6')">6</button>
+            <button onclick="calcInput('+')">+</button>
+            <button onclick="calcInput('1')">1</button>
+            <button onclick="calcInput('2')">2</button>
+            <button onclick="calcInput('3')">3</button>
+            <button class="calc-equal" onclick="calcResult()">=</button>
+            <button class="calc-zero" onclick="calcInput('0')">0</button>
+            <button onclick="calcInput('.')">.</button>
+        </div>
+    </div>
+</div>
+        <div class="widgets-area">
+            <div class="widget glass-card">
+                <span class="widget-title">Neural Load</span>
+                <div class="ai-status">NPU: 12% | Optimized</div>
+            </div>
+            <div class="widget glass-card">
+                <span class="widget-title">Weather</span>
+                <div class="temp">24°C</div>
+            </div>
+        </div>
+
+        <div class="fluid-window" id="app-window" style="left: 15%; top: 15%;">
+            <div class="window-header">
+                <div class="header-left">
+                    <img src="https://img.icons8.com/fluency/48/artificial-intelligence.png" width="16" alt="ai">
+                    <span>Neural Workspace</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn minimize">─</button>
+                    <button class="win-btn maximize">▢</button>
+                    <button class="win-btn close" onclick="document.getElementById('app-window').classList.add('hidden')">✕</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="ai-hero">
+                    <h1>Здравствуй, пользователь</h1>
+                    <p>CorePC анализирует ваш текущий контекст: <strong>"Разработка интерфейса"</strong>.</p>
+                </div>
+                <div class="context-grid">
+                    <div class="context-card">операционка крутая!</div>
+                    <div class="context-card">Оптимизировать RAM</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-center glass-card" id="action-center">
+            <h3>Уведомления</h3>
+            <div class="notification">
+                <strong>Copilot+</strong>
+                <p>Проект "ProtoFPS" сделал Werhes.</p>
+            </div>
+        </div>
+
+        <div class="start-menu" id="start-menu">
+            <div class="search-container">
+                <div class="search-bar">
+                    <span class="ai-sparkle">✨</span>
+                    <input type="text" placeholder="Спросите Windows о чем угодно...">
+                </div>
+            </div>
+            
+            <div class="start-sections">
+                <div class="section-pinned">
+                    <h4>Закрепленные</h4>
+                    <div class="pinned-grid">
+                        <div class="app-item"><div class="icon-box ico-edge"></div><span>Edge</span></div>
+                        <div class="app-item"><div class="icon-box ico-folder"></div><span>Files</span></div>
+                        <div class="app-item"><div class="icon-box ico-store"></div><span>Store</span></div>
+                        <div class="app-item"><div class="icon-box ico-ai"></div><span>Brain</span></div>
+                    </div>
+                </div>
+                
+                <div class="section-recents glass-card">
+                    <h4>Рекомендовано ИИ</h4>
+                    <div class="recent-item">🎶 Next Music.exe</div>
+                    <div class="recent-item">🎨 Vk m.exe</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-taskbar">
+            <div class="taskbar-left">
+                <button class="task-icon start-btn" id="start-btn">
+                    <img src="https://img.icons8.com/fluency/48/windows-11.png" width="24" alt="start">
+                </button>
+            </div>
+            
+            <div class="taskbar-center">
+                <button class="task-icon" onclick="document.getElementById('app-window').classList.remove('hidden')">
+                    <img src="https://img.icons8.com/fluency/48/folder-invoices.png" width="24" alt="files">
+                </button>
+                <button class="task-icon" onclick="toggleApp('calc-window')">
+                 <img src="https://img.icons8.com/fluency/48/calculator.png" width="24">
+                 </button>
+                <button class="task-icon"><img src="https://img.icons8.com/fluency/48/microsoft-edge.png" width="24" alt="edge"></button>
+                <button class="task-icon"><img src="https://img.icons8.com/fluency/48/visual-studio-code-2019.png" width="24" alt="vscode"></button>
+                <div class="active-indicator"></div>
+            </div>
+            
+            <div class="taskbar-right" id="tray-btn">
+                <div class="system-icons">
+                    <span>🛜</span>
+                    <span>🔊</span>
+                </div>
+                <div class="time-container">
+                    <div class="clock" id="clock">12:00</div>
+                    <div class="date" id="date">25.03.2026</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
